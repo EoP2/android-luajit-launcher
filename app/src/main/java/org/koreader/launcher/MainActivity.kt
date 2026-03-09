@@ -825,7 +825,6 @@ class MainActivity : NativeActivity(), LuaInterface,
     private fun setFullscreenLayout() {
         window.addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        val decorView = window.decorView
         decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
     }
 
