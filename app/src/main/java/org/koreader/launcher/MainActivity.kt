@@ -114,6 +114,9 @@ class MainActivity : NativeActivity(), LuaInterface,
 
         setTheme(R.style.Fullscreen)
 
+        window.addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
         // Window background must be black for vertical and horizontal lines to be visible
         window.setBackgroundDrawableResource(android.R.color.black)
 
@@ -149,6 +152,7 @@ class MainActivity : NativeActivity(), LuaInterface,
     /* Called when the activity has become visible. */
     override fun onResume() {
         super.onResume()
+        window.addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         device.epd.resume()
         timeout.onResume(this)
@@ -819,6 +823,7 @@ class MainActivity : NativeActivity(), LuaInterface,
 
     @Suppress("DEPRECATION")
     private fun setFullscreenLayout() {
+        window.addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         val decorView = window.decorView
         decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
