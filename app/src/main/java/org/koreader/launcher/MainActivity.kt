@@ -149,6 +149,7 @@ class MainActivity : NativeActivity(), LuaInterface,
     /* Called when the activity has become visible. */
     override fun onResume() {
         super.onResume()
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         device.epd.resume()
         timeout.onResume(this)
         isResumed = true
@@ -818,6 +819,7 @@ class MainActivity : NativeActivity(), LuaInterface,
 
     @Suppress("DEPRECATION")
     private fun setFullscreenLayout() {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         val decorView = window.decorView
         decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
     }
